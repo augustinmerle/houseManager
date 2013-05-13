@@ -1,0 +1,52 @@
+{% extends "::Base.html.twig" %}
+
+{% block head %}
+    <link rel="icon" sizes="16x16" href="{{ asset('favicon.ico') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/atchouseshare/css/main.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/adesignscalendar/css/fullcalendar/fullcalendar.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/atchouseshare/css/calendar.css') }}" />
+    <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/jquery/jquery-1.8.2.min.js') }}"></script>
+		<script src="{{ asset('bundles/atchouseshare/js/jquery.zweatherfeed.min.js') }}" ></script>
+
+{% endblock %}
+
+{% block title 'Gestion de la maison de Bréhat' %}
+
+{% block body %}
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="flash-message">
+            <em>Notice</em>: {{ flashMessage }}
+        </div>
+    {% endfor %}
+
+    {% block content_header %}
+        <div style="float: left;">
+           <ul id="menu">
+               {% block content_header_more %}
+                   <li><a href="{{ path('home') }}">Bienvenue</a></li>
+                   <li><a href="">consignes</a></li>
+                   <li><a href="{{ path('datereg_new') }}">réservations</a></li>
+               {% endblock %}
+           </ul>
+        </div>
+        <div style="float: right; margin: 10px; font-size: 1.2em;" id="weather"><div id="test" style="padding: 5px;"></div></div>
+        <div style="clear: both;"></div>
+    {% endblock %}
+
+    <div class="block">
+        {% block content %}{% endblock %}
+    </div>
+
+		<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+		<script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+		<script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/fullcalendar/jquery.fullcalendar.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/calendar-settings.js') }}"></script>    
+		<script type="text/javascript">
+		$(document).ready(function () {
+			$('#test').weatherfeed(['FRXX6226'], {
+				forecast: true
+			});
+		});
+
+		</script>
+{% endblock %}

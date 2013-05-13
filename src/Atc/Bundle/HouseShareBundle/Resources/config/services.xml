@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="atc.houseshare.calendar_listener" class="Atc\Bundle\HouseShareBundle\EventListener\CalendarEventListener">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <tag name="kernel.event_listener" event="calendar.load_events" method="loadEvents" />
+        </service>
+        <service id="atc_user.registration.form.type" class="Atc\Bundle\HouseShareBundle\Form\Type\RegistrationFormType">
+            <tag name="form.type" alias="atc_user_registration" />
+            <argument>%fos_user.model.user.class%</argument>
+        </service>
+    </services>
+</container>
+
+
+

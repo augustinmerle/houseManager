@@ -1,0 +1,6 @@
+atc_house_share_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: AtcHouseShareBundle:Default:index }
+atc_house_share_shoplist:
+    pattern:  /shoplist/{name}
+    defaults: { _controller: AtcHouseShareBundle:Shoplist:index }

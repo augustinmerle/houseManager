@@ -1,0 +1,20 @@
+{% extends 'AtcHouseShareBundle::layout.html.twig' %}
+
+{% block content %}
+    <h1>Nouvelle article à acheter</h1>
+
+    <form action="{{ path('shoplist_create') }}" method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+        <span>
+            <button type="submit">Ajouter a la liste des courses</button>
+        </span>
+    </form>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('index') }}">
+            retour à la liste
+        </a>
+    </li>
+</ul>
+{% endblock %}

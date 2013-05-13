@@ -1,0 +1,46 @@
+{% extends 'AtcHouseShareBundle::layout.html.twig' %}
+
+{% block content %}
+
+    <h1>Liste des courses manquantes</h1>
+		<p>Username: {{ app.user.username }} <a href="{{ path('logout') }}">déconnection</a></p>
+
+<div style="float: left;">
+    <table class="records_list">
+   
+        <tbody>
+        {% for entity in shoplist %}
+          {%if entity.isBought != true %}
+            <tr>
+                <td><b>{{ entity.isBought }} {{ entity.article }}</b> </td>
+                <td>ajouté par {{ entity.author }}</td>
+                <td>le {% if entity.addingDate %}{{ entity.addingDate|date('d/m/Y') }}{% endif %}</td>
+                <td><a href="{{ path('shoplist_bought', { 'id': entity.id }) }}">j'ai acheté</a></td>
+            </tr>
+           {% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
+        <ul>
+        <li>
+            <a href="{{ path('shoplist_new') }}">ajouter un article à acheter</a>
+        </li>
+    </ul>
+</div>
+		
+<br/>
+<br style="clear:both;"/>
+{% include 'ADesignsCalendarBundle::calendar.html.twig' %}
+
+
+<br style="clear:both;"/>
+
+emails:
+aaa@test.com
+aaa@test.com
+aaa@test.com
+aaa@test.com
+aaa@test.com
+
+
+{% endblock %}

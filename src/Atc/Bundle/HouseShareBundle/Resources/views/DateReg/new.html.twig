@@ -1,0 +1,41 @@
+{% extends 'AtcHouseShareBundle::layout.html.twig' %}
+
+{% block content -%}
+    <h1>Réservation plannning Bréhat</h1>
+<div style="float: left; width: 350px;">
+    <form action="{{ path('datereg_create') }}" method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+        <p>
+            <button type="submit">Enregistrer</button>
+        </p>
+    </form>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('home') }}">retour</a>
+    </li>
+</ul>
+</div>
+<div class="resa_list">
+	<table class="records_list">
+       <thead>
+           <tr>
+               <th>Résa</th>
+               <th>du</th>
+               <th>au</th>
+           </tr>
+       </thead>
+       <tbody>
+       {% for entity in entities %}
+           <tr>
+               <td>{{ entity.title }}</td>
+               <td>{% if entity.startDatetime %}{{ entity.startDatetime|date('d M Y H:i') }}{% endif %}</td>
+               <td>{% if entity.endDatetime %}{{ entity.endDatetime|date('d M Y H:i') }}{% endif %}</td>
+              
+           </tr>
+       {% endfor %}
+       </tbody>
+   </table>
+</div>
+<br style="clear: both" />
+{% endblock %}

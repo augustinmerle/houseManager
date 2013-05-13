@@ -1,0 +1,54 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>ShopList</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Article</th>
+                <td>{{ entity.article }}</td>
+            </tr>
+            <tr>
+                <th>Addingdate</th>
+                <td>{{ entity.addingDate|date('d/m/Y') }}</td>
+            </tr>
+            <tr>
+                <th>Isbought</th>
+                <td>{{ entity.isBought }}</td>
+            </tr>
+            <tr>
+                <th>Author</th>
+                <td>{{ entity.author }}</td>
+            </tr>
+            <tr>
+                <th>Buyer</th>
+                <td>{{ entity.buyer }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('shoplist') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('shoplist_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('shoplist_delete', { 'id': entity.id }) }}" method="post">
+            <input type="hidden" name="_method" value="DELETE" />
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>
+{% endblock %}

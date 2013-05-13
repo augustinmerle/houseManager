@@ -1,0 +1,48 @@
+#calendar-holder {
+	width: 400px;
+	float: right;
+}
+
+#menu li {
+	display: inline;
+	margin-right: 10px;
+}
+
+#test {
+}
+#test .weatherFeed {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 90%;
+	margin: 2em 3em;
+	width: 280px;
+}
+#test .weatherFeed a { color: #888; }
+#test .weatherFeed a:hover {
+	color: #000;
+	text-decoration: none;
+}
+#test .weatherItem {
+	padding: 5px; 
+	text-align: right;
+}
+#test .weatherCity { text-transform: uppercase; }
+#test .weatherTemp {
+	font-size: 2.8em;
+	font-weight: bold;
+}
+#test .weatherDesc, .weatherCity, .weatherForecastDay  { font-weight: bold; }
+#test .weatherDesc { margin-bottom: 0.4em; }
+#test .weatherRange, .weatherWind, .weatherLink, .weatherForecastItem { font-size: 0.8em; }
+#test .weatherLink, #test .weatherForecastItem {
+	margin-top: 0.5em;
+	text-align: left;
+}
+#test .weatherForecastItem {
+	padding: 0.5em 0.5em 0.5em 80px;
+	background-color: #fff;
+	background-position: left center;
+}
+#test .weatherForecastDay { font-size: 1.1em; }
+
+#test .odd { background-color: #e8e8fc; }
+#test .even { background-color: #d4d4e8; }
