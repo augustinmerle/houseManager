@@ -5,7 +5,7 @@
     <h1>Liste des courses manquantes</h1>
 		<p>Username: {{ app.user.username }} <a href="{{ path('logout') }}">déconnection</a></p>
 
-<div style="float: left;">
+<div style="float: left; width: 600px;" >
     <table class="records_list">
    
         <tbody>
@@ -27,11 +27,20 @@
         </li>
     </ul>
 </div>
-		
+<br style="clear:left ;" />
+<div style="float: left; width: 600px;" >
+			
+			{% for entity in postlist %}
+              <p style="border: 1px solid grey">
+								{{ entity.post }}
+              	<legend>{% if entity.dateAdd %}{{ entity.dateAdd|date('Y-m-d') }}{% endif %}</legend>
+              </p>
+      {% endfor %}
+</div>
 <br/>
-<br style="clear:both;"/>
+<div style="float: right;">
 {% include 'ADesignsCalendarBundle::calendar.html.twig' %}
-
+</div>
 
 <br style="clear:both;"/>
 

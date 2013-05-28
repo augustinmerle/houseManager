@@ -45,9 +45,11 @@ class DefaultController extends Controller
 	     
         $em = $this->getDoctrine()->getManager();
         $shoplist = $em->getRepository('AtcHouseShareBundle:ShopList')->findAll();
+				$posts = $em->getRepository('AtcHouseShareBundle:Post')->findAll();
 
         return array(
             'shoplist' => $shoplist,
+						'postlist' => $posts,
         );
     }
 }
