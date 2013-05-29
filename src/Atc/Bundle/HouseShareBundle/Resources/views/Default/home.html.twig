@@ -2,7 +2,7 @@
 
 {% block content %}
 
-    <h1>Liste des courses manquantes</h1>
+    <h2>Liste des courses manquantes</h2>
 		<p>Username: {{ app.user.username }} <a href="{{ path('logout') }}">déconnection</a></p>
 
 <div style="float: left; width: 600px;" >
@@ -29,7 +29,7 @@
 </div>
 <br style="clear:left ;" />
 <div style="float: left; width: 600px;" >
-			
+		<h2>Cahier de Liaison</h2>	
 			{% for entity in postlist %}
               <p style="border: 1px solid grey">
 								{{ entity.post }}
