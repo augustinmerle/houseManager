@@ -77,6 +77,8 @@ fos_user:
             type: atc_user_registration
 
 mopa_bootstrap:
+    navbar: ~
+    initializr: ~
     form:
         show_legend: false # default is true
         show_child_legend: false # default is true

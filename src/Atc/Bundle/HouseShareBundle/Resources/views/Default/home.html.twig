@@ -1,35 +1,46 @@
 {% extends 'AtcHouseShareBundle::layout.html.twig' %}
 
-{% block content %}
+{% block leftside %}   
+{% include 'ADesignsCalendarBundle::calendar.html.twig' %}
+{% endblock leftside %}   
 
-    <h2>Liste des courses manquantes</h2>
-		<p>Username: {{ app.user.username }} <a href="{{ path('logout') }}">déconnection</a></p>
+{% block course %}    
+<h2>Liste des courses manquantes</h2>
 
-<div style="float: left; width: 600px;" >
-    <table class="records_list">
-   
+<div >
+    <table class="table .table-condensed ">
         <tbody>
         {% for entity in shoplist %}
           {%if entity.isBought != true %}
             <tr>
-                <td><b>{{ entity.isBought }} {{ entity.article }}</b> </td>
-                <td>ajouté par {{ entity.author }}</td>
+                <td><b>{{ entity.article }}</b> </td>
+                <td><em class="text-info">ajouté par {{ entity.author }}</em></td>
                 <td>le {% if entity.addingDate %}{{ entity.addingDate|date('d/m/Y') }}{% endif %}</td>
-                <td><a href="{{ path('shoplist_bought', { 'id': entity.id }) }}">j'ai acheté</a></td>
+                <td><a class="btn btn-success" href="{{ path('shoplist_bought', { 'id': entity.id }) }}">j'ai acheté</a></td>
             </tr>
            {% endif %}
         {% endfor %}
         </tbody>
     </table>
-        <ul>
-        <li>
-            <a href="{{ path('shoplist_new') }}">ajouter un article à acheter</a>
-        </li>
-    </ul>
+    <a class="btn btn-small btn-primary" data-toggle="modal" data-target="#modal" href="{{ path('shoplist_new') }}"><i class="icon-user icon-white"></i> ajouter un article à acheter</a>
+<div id="modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+  </div>
+  <div class="modal-body">
+    <p>Chargement en cours…</p>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+  </div>
+	
 </div>
-<br style="clear:left ;" />
-<div style="float: left; width: 600px;" >
-		<h2>Cahier de Liaison</h2>	
+</div>
+{% endblock course %}
+{% block content %}
+
+<div>
+  <h2>Cahier de Liaison</h2>	
 			{% for entity in postlist %}
               <p style="border: 1px solid grey">
 								{{ entity.post }}
@@ -38,11 +49,8 @@
       {% endfor %}
 </div>
 <br/>
-<div style="float: right;">
-{% include 'ADesignsCalendarBundle::calendar.html.twig' %}
-</div>
 
-<br style="clear:both;"/>
+
 
 emails:
 aaa@test.com
