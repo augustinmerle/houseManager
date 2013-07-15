@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "bea432412efb2c818d1b9707fb35d6c9",
+    "hash": "5f231c5708d0495961206b23d3b603af",
     "packages": [
         {
             "name": "adesigns/calendar-bundle",
