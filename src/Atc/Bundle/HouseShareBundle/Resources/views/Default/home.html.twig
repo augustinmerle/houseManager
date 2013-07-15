@@ -37,17 +37,103 @@
 </div>
 </div>
 {% endblock course %}
-{% block content %}
 
-<div>
-  <h2>Cahier de Liaison</h2>	
-			{% for entity in postlist %}
-              <p style="border: 1px solid grey">
-								{{ entity.post }}
-              	<legend>{% if entity.dateAdd %}{{ entity.dateAdd|date('Y-m-d') }}{% endif %}</legend>
-              </p>
-      {% endfor %}
+{% block content %}
+<div class="span6"> <!-- todo list-->
+  <div class="widget">
+    <div class="widget-header">
+      <div class="title">
+        <span class="fs1" aria-hidden="true" data-icon="&#xe0b3;"></span> Liste des courses manquantes
+      </div>
+    </div>
+    <div class="widget-body">
+      <div class="todo-container">
+        <ul class="todo-list">
+           {% for entity in shoplist %}
+		          {%if entity.isBought != true %}
+					<li>
+            <span class="new"></span>
+            <input type="checkbox" id="{{ entity.id }}"/>
+            <label for="1">
+              {{ entity.article }}
+            </label><em class="text-info">ajouté par {{ entity.author }}</em>
+            <span class="date">{% if entity.addingDate %}{{ entity.addingDate|date('d/m/Y') }}{% endif %}</span>
+						<a class="btn btn-success" href="{{ path('shoplist_bought', { 'id': entity.id }) }}">j'ai acheté</a>
+          </li>
+					  {% endif %}
+	        {% endfor %}
+          <li>
+            <span class="completed"></span>
+            <input type="checkbox" id="3" checked/>
+            <label for="3">
+              Meet Mr. Been at 4:30 PM
+            </label>
+            <span class="date">May 29th</span>
+          </li>
+          <li>
+            <span class="process"></span>
+            <input type="checkbox" id="4"/>
+            <label for="4">
+              Order Biryani
+            </label>
+            <span class="date">Due Apr 27</span>
+          </li>
+          
+        </ul>
+        <form action="#" class="no-margin">
+          <div class="control-group">
+            <div class="controls">
+              <textarea class="input-block-level" placeholder="Add new task"></textarea>
+            </div>
+          </div>
+          <div class="control-group no-margin">
+            <div class="controls">
+              <button type="submit" class="btn btn-info pull-right">Create</button>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>
+</div> <!-- end todo list-->
+			<div class="row-fluid"> <!-- cahier de liaison -->
+		    <div class="span6">
+		      <div class="widget no-margin">
+		        <div class="widget-header">
+		          <div class="title">
+		            <span class="fs1" aria-hidden="true" data-icon="&#xe1c5;"></span> Cahier de Liaison
+		          </div>
+		        </div>
+		        <div class="widget-body">
+		          <ul class="imp-messages">
+								{% for entity in postlist %}
+
+		            <li>
+		              <img src="img/avatar-1.png" class="avatar" alt="Avatar">
+		              <div class="message-date">
+		                <h3 class="date text-info">{{ entity.dateAdd|date('d') }}</h3>
+		                <p class="month">{{ entity.dateAdd|date('M') }}</p>
+		              </div>
+		              <div class="message-wrapper">
+		                <h4 class="message-heading">{{ entity.author }}</h4>
+		                <blockquote class="message">{{ entity.post }}
+		                </blockquote>
+		                <br>
+		                <p class="url">
+		                  <span class="fs1 text-info" aria-hidden="true" data-icon="&#xe0c5;"></span>
+		                  <a href="#">Voir le message complet</a>
+		                </p>
+		              </div>
+		            </li>
+		            {% endfor %}
+		          </ul>
+		        </div>
+		      </div>
+		    </div>
+		  </div> <!-- end cahier de liaison -->
+		
 <br/>
 
 

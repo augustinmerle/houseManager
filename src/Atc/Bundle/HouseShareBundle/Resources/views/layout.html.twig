@@ -133,7 +133,7 @@
           </div>
           <div class="welcome-text">
             <span>Bonjour</span>
-            <p class="name">{{ app.user.username }}</p>
+            <p class="name">{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %} {{ app.user.username }} {% endif %}</p>
           </div>
         </div> <!-- User details end -->
 
