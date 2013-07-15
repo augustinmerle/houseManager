@@ -215,7 +215,7 @@ class ShopListController extends Controller
      * @Method("GET")
      * @Route("/{id}/bought", name="shoplist_bought")
      */
-     public function boughtArticle(Request $request, $id){
+     public function boughtArticleAction(Request $request, $id){
 	      $em = $this->getDoctrine()->getManager();
         $article = $em->getRepository('AtcHouseShareBundle:ShopList')->find($id);
          if (!$article) {
