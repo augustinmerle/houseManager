@@ -3,7 +3,6 @@
 namespace Atc\Bundle\HouseShareBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -20,7 +19,7 @@ use JMS\SecurityExtraBundle\Annotation\Secure;
  */
 class DefaultController extends Controller
 {
-	  /**
+    /**
      * index of app.
      *
      * @Route("/", name="index")
@@ -30,9 +29,10 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-	    return array();
+        return array();
     }
-		/**
+    
+    /**
      * home of app.
      *
      * @Route("/home", name="home")
@@ -41,15 +41,32 @@ class DefaultController extends Controller
      * @Template()
      */
     public function homeAction()
-    {
-	     
+    { 
         $em = $this->getDoctrine()->getManager();
         $shoplist = $em->getRepository('AtcHouseShareBundle:ShopList')->findAll();
-				$posts = $em->getRepository('AtcHouseShareBundle:Post')->findAll();
+        $posts = $em->getRepository('AtcHouseShareBundle:Post')->findAll();
 
         return array(
             'shoplist' => $shoplist,
-						'postlist' => $posts,
+            'postlist' => $posts,
+        );
+    }
+    
+    /**
+     * home of app.
+     *
+     * @Route("/calendrier", name="calendar")
+     * @Method("GET")
+     * @Secure(roles="ROLE_USER")
+     * @Template()
+     */
+    public function calendarAction()
+    { 
+        $em = $this->getDoctrine()->getManager();
+        $calEvent = $em->getRepository('AtcHouseShareBundle:DateReg')->findAll();
+
+        return array(
+            'calevent' => $calEvent,
         );
     }
 }

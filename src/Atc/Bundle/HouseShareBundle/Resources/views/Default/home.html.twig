@@ -1,57 +1,81 @@
-{% extends 'AtcHouseShareBundle::layout.html.twig' %}
+{% extends '::layout.html.twig' %}
 
-{% block leftside %}   
-{% include 'ADesignsCalendarBundle::calendar.html.twig' %}
-{% endblock leftside %}   
 
-{% block course %}    
-<h2>Liste des courses manquantes</h2>
+{% block title_content %}Accueil{% endblock %}
 
-<div >
-    <table class="table .table-condensed ">
-        <tbody>
-        {% for entity in shoplist %}
-          {%if entity.isBought != true %}
-            <tr>
-                <td><b>{{ entity.article }}</b> </td>
-                <td><em class="text-info">ajouté par {{ entity.author }}</em></td>
-                <td>le {% if entity.addingDate %}{{ entity.addingDate|date('d/m/Y') }}{% endif %}</td>
-                <td><a class="btn btn-success" href="{{ path('shoplist_bought', { 'id': entity.id }) }}">j'ai acheté</a></td>
-            </tr>
-           {% endif %}
-        {% endfor %}
-        </tbody>
-    </table>
-    <a class="btn btn-small btn-primary" data-toggle="modal" data-target="#modal" href="{{ path('shoplist_new') }}"><i class="icon-user icon-white"></i> ajouter un article à acheter</a>
-<div id="modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-  </div>
-  <div class="modal-body">
-    <p>Chargement en cours…</p>
-  </div>
-  <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-  </div>
-	
-</div>
-</div>
-{% endblock course %}
 {% block content %}
-
-<div>
-  <h2>Cahier de Liaison</h2>	
-			{% for entity in postlist %}
-              <p style="border: 1px solid grey">
-								{{ entity.post }}
-              	<legend>{% if entity.dateAdd %}{{ entity.dateAdd|date('Y-m-d') }}{% endif %}</legend>
-              </p>
-      {% endfor %}
-</div>
-<br/>
-
-
-
+<div class="row-fluid"> <!-- cahier de liaison -->
+    <div class="span6">
+        <div class="widget no-margin">
+            <div class="widget-header">
+                <div class="title">
+                    <span class="fs1" aria-hidden="true" data-icon="&#xe1c5;">Liste des courses</span>
+                </div>
+            </div>
+            <div class="widget-body">
+                <table class="table .table-condensed ">
+                    <tbody>
+                        {% for entity in shoplist %}
+                        {%if entity.isBought != true %}
+                        <tr>
+                            <td><b>{{ entity.article }}</b> </td>
+                            <td><em class="text-info">ajouté par {{ entity.author }}</em></td>
+                            <td>le {% if entity.addingDate %}{{ entity.addingDate|date('d/m/Y') }}{% endif %}</td>
+                            <td><a class="btn btn-success" href="{{ path('shoplist_bought', { 'id': entity.id }) }}">j'ai acheté</a></td>
+                        </tr>
+                        {% endif %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <a class="btn btn-small btn-primary" data-toggle="modal" data-target="#modal" href="{{ path('shoplist_new') }}"><i class="icon-user icon-white"></i> ajouter un article à acheter</a>
+                <div id="modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Chargement en cours…</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="span6">
+        <div class="widget no-margin">
+            <div class="widget-header">
+                <div class="title">
+                    <span class="fs1" aria-hidden="true" data-icon="&#xe1c5;">Cahier de Liaison</span>
+                </div>
+            </div>
+            <div class="widget-body">
+                <ul class="imp-messages">
+                    {% for entity in postlist %}
+                    <li>
+                        <img src="img/avatar-1.png" class="avatar" alt="Avatar">
+                        <div class="message-date">
+                            <h3 class="date text-info">{{ entity.dateAdd|date('d') }}</h3>
+                            <p class="month">{{ entity.dateAdd|date('M') }}</p>
+                        </div>
+                        <div class="message-wrapper">
+                            <h4 class="message-heading">{{ entity.author }}</h4>
+                            <blockquote class="message">{{ entity.post }}
+                            </blockquote>
+                            <br/>
+                            <p class="url">
+                                <span class="fs1 text-info" aria-hidden="true" data-icon="&#xe0c5;"></span>
+                                <a href="{{ path('post_show', { 'id': entity.id }) }}">Voir le message complet</a>
+                            </p>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+                <a class="btn btn-small btn-primary" data-toggle="modal" data-target="#modal" href="{{ path('post_new') }}"><i class="icon-user icon-white"></i> ajouter un message</a>
+            </div>
+        </div>
+    </div>
+</div> <!-- end cahier de liaison -->
 
 
 {% endblock %}

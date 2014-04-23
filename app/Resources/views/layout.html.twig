@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+  <!--[if lt IE 7]>
+    <html class="lt-ie9 lt-ie8 lt-ie7" lang="en">
+  <![endif]-->
+
+  <!--[if IE 7]>
+    <html class="lt-ie9 lt-ie8" lang="en">
+  <![endif]-->
+
+  <!--[if IE 8]>
+    <html class="lt-ie9" lang="en">
+  <![endif]-->
+
+  <!--[if gt IE 8]>
+    <!-->
+<html lang="fr">
+    <!--
+  <![endif]-->
+
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}Gestion de la maison de Bréhat{% endblock %}</title>
+    <meta name="author" content="Srinu Basava">
+    <meta content="width=device-width, initial-scale=1.0, user-scalable=no" name="viewport">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <script src="{{ asset('bundles/atchouseshare/js/html5-trunk.js') }}"></script>
+    
+    <link rel="stylesheet" href="{{ asset('bundles/atchouseshare/icomoon/style.css') }}" type="text/css" media="screen"/>
+    <!--[if lte IE 7]>
+    <script src="{{ asset('bundles/atchouseshare/css/icomoon-font/lte-ie7.js') }}"></script>
+    <![endif]-->
+    
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="{{ asset('bundles/atchouseshare/css/main.css') }}" type="text/css" media="screen"/>
+
+    <!-- fullcalendar css -->
+    <link rel="stylesheet" href="{{ asset('bundles/atchouseshare/css/fullcalendar/fullcalendar.css') }}" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="{{ asset('bundles/atchouseshare/css/fullcalendar/fullcalendar.print.css') }}" type="text/css" media="print"/>
+    
+    <script src="{{ asset('bundles/atchouseshare/js/jquery.min.js') }}"></script>
+
+  </head>
+  <body>
+    <header> <!-- Header start -->
+      <a href="{{ path('home') }}" class="logo">Gestion de la maison de Brehat</a> <!-- Logo -->
+      <div id="mini-nav"> <!-- Right side nav start -->
+        <ul class="hidden-phone">
+          <li>
+            <a href="{{ path('fos_user_profile_edit') }}">Profil <span class="fs1" aria-hidden="true" data-icon="&#xe090;"></span></a>
+          </li>
+          
+          <li>
+              {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            <a href="{{ path('logout') }}">Deconnexion <span class="fs1" aria-hidden="true" data-icon="&#xe0b1;"></span></a>
+            {% else %}
+            <a href="{{ path('fos_user_security_login') }}">Connexion <span class="fs1" aria-hidden="true" data-icon="&#xe0b1;"></span></a>            
+            {% endif %}
+          </li>
+        </ul>
+        <div class="clearfix"></div>
+      </div> <!-- Right side nav end -->
+    </header> <!-- Header end -->
+    <div class="container-fluid"> <!-- Bootstrap Container fluid start -->
+      <div class="left-sidebar hidden-tablet hidden-phone"> <!-- Left sidebar start -->
+        <div class="user-details"> <!-- User details Start -->
+          <div class="user-img">
+            <img src="{{ asset('bundles/atchouseshare/img/user-avatar.png') }}" class="avatar" alt="Avatar">
+          </div>
+          <div class="welcome-text">
+            <span>Bonjour</span>
+            <p class="name">{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %} {{ app.user.username }} {% endif %}</p>
+          </div>
+        </div> <!-- User details end -->
+        <div class="easy-pie-chart"> <!-- Animated Chart start -->
+          
+        </div> <!-- Animated Chart end -->
+      </div> <!-- Left sidebar end -->
+      <div class="dashboard-wrapper"> <!-- Main dashboard wrapper start -->
+        <div id="main-nav" class="hidden-phone hidden-tablet"> <!-- Main navigation start -->
+          <ul>
+            <li>
+              <a href="{{ path('home') }}"  class="{% if app.request.attributes.get('_route') == 'home' %}selected{% endif %}">
+                <span class="fs1" aria-hidden="true" data-icon="&#xe0a0;"></span> Dashboard
+              </a>
+            </li>
+            <li>
+              <a href="{{ path('datereg_new') }}" class="{% if app.request.attributes.get('_route') == 'datereg_new' %}selected{% endif %}">
+                <span class="fs1" aria-hidden="true" data-icon="&#xe097;"></span> Reservation
+              </a>
+            </li>
+            <li>
+              <a href="{{ path('calendar') }}" class="{% if app.request.attributes.get('_route') == 'calendar' %}selected{% endif %}">
+                <span class="fs1" aria-hidden="true" data-icon="&#xe0b8;"></span> Calendrier
+              </a>
+              
+              </ul>
+            </li>
+          </ul>
+          <div class="clearfix"></div>
+        </div> <!-- Main navigation end -->
+        <div class="main-container"> <!-- Main container start -->
+          <div class="navbar hidden-desktop"> <!-- Mobile and tablet navigation start -->
+            <div class="navbar-inner">
+              <div class="container">
+                <a data-target=".navbar-responsive-collapse" data-toggle="collapse" class="btn btn-navbar">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </a>
+                <div class="nav-collapse collapse navbar-responsive-collapse">
+                  <ul class="nav">
+                    <li>
+                      <a href="{{ path('home') }}" class="{% if app.request.attributes.get('_route') == 'home' %}selected{% endif %}">Dashboard</a>
+                    </li>
+                    <li>
+                      <a href="{{ path('datereg_new') }}" class="{% if app.request.attributes.get('_route') == '_list' %}selected{% endif %}">Reservation</a>
+                    </li>
+                    <li>
+                      <a href="{{ path('calendar') }}"  class="{% if app.request.attributes.get('_route') == '_list' %}selected{% endif %}">Calendrier</a>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div> <!-- Mobile and tablet navigation end -->
+
+          <div class="page-header"> <!-- Page header start -->
+            <div class="pull-left">
+              <h2>{% block title_content %}Mon titre{% endblock %}</h2>
+            </div>
+            <div class="pull-left"> <!-- Page Heading start -->
+            </div> <!-- Page Heading end -->
+            
+            <div class="pull-right">
+              <ul class="stats">
+                <li class="color-first hidden-phone">
+                  <span class="fs1" aria-hidden="true" data-icon="&#xe0b3;"></span>
+                  <div class="details">
+                    <span class="big">12</span>
+                    <span>New Tasks</span>
+                  </div>
+                </li>
+                <li class="color-second">
+                  <span class="fs1" aria-hidden="true" data-icon="&#xe052;"></span>
+                  <div class="details" id="date-time">
+                    <span>Date </span>
+                    <span>Day, Time</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <div class="clearfix"></div>
+          </div> <!-- Page header end -->
+
+          <div class="row-fluid"> <!-- Row fluid start -->
+            <div class="span12">
+              <!-- Your Content -->
+ 							{% block content %}{% endblock %}
+            </div>
+          </div> <!-- Row fluid end -->
+
+          <div class="row-fluid"> <!-- Row fluid with 2 columns start -->
+            <div class="span6">
+              <!-- Your Content -->
+            </div>
+            <div class="span6">
+              <!-- Your Content -->
+            </div>
+          </div> <!-- Row fluid with 2 columns end -->
+
+          <div class="row-fluid"> <!-- Row fluid with 3 columns start -->
+            <div class="span4">
+              <!-- Your Content -->
+            </div>
+            <div class="span4">
+              <!-- Your Content -->
+            </div>
+            <div class="span4">
+              <!-- Your Content -->
+            </div>
+          </div> <!-- Row fluid with 3 columns end -->
+
+        </div> <!-- Main dashboard wrapper end -->
+      </div> <!-- Main dashboard container end -->
+    </div><!-- Bootstrap container fluid end -->
+
+    <script src="{{ asset('bundles/atchouseshare/js/bootstrap.js') }}"></script>
+    <script src="{{ asset('bundles/atchouseshare/js/moment.js') }}"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    
+    <!-- Datatables JS -->
+    <script src="{{ asset('bundles/atchouseshare/js/jquery.dataTables.js') }}"></script>
+    
+    
+    <!-- Easy Pie Chart JS -->
+    <script src="{{ asset('bundles/atchouseshare/js/pie-charts/jquery.easy-pie-chart.js') }}"></script>
+
+    <!-- Custom Js -->
+    <script src="{{ asset('bundles/atchouseshare/js/theming.js') }}"></script>
+    <script src="{{ asset('bundles/atchouseshare/js/custom.js') }}"></script>
+    
+    <!-- Calendar Js -->
+    <script src="{{ asset('bundles/atchouseshare/js/fullcalendar/jquery-ui-1.10.2.custom.min.js') }}"></script>
+    <script src="{{ asset('bundles/atchouseshare/js/fullcalendar.js') }}"></script>
+
+    <!-- Custom Js -->
+    <script src="{{ asset('bundles/atchouseshare/js/theming.js') }}"></script>
+    <script src="{{ asset('bundles/atchouseshare/js/custom.js') }}"></script>
+      
+  </body>
+</html>

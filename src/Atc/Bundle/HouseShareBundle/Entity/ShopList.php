@@ -15,7 +15,7 @@ class ShopList
 			public function __construct()
 		{
 		    $this->addingDate = new \DateTime('now');
-				$this->isBought = false;
+			$this->isBought = false;
 		}
     /**
      * @var integer

@@ -10,25 +10,25 @@ class DateRegType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-	      $yearsrange = array();
-	      for($i=0; $i<3; $i++) 
-	      { 
-		        $yearsrange[] = date('Y') +$i ;
+        $yearsrange = array();
+        for($i=0; $i<3; $i++) 
+        { 
+            $yearsrange[] = date('Y') +$i ;
         }
         $builder
-            ->add('title')
+            ->add('title',null, array('label' => 'donnez un titre à l\'évenement'))
             ->add('startDatetime', 'date', array(
-						    'input'  => 'datetime',
-						    'widget' => 'choice',
-						    'years'  => $yearsrange
-						))
+                'input'  => 'datetime',
+                'widget' => 'choice',
+                'years'  => $yearsrange,
+                'label'  => 'date de départ' 
+            ))
             ->add('endDatetime', 'date', array(
-						    'input'  => 'datetime',
-						    'widget' => 'choice',
-						    'years'  => $yearsrange
-						))
-            
-        ;
+                'input'  => 'datetime',
+                'widget' => 'choice',
+                'years'  => $yearsrange,
+                'label'  => 'date de fin' 
+            ));
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)

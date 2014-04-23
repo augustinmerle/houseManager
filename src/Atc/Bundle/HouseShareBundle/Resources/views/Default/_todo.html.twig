@@ -1,0 +1,47 @@
+
+<div class="span6"> <!-- todo list-->
+  <div class="widget">
+    <div class="widget-header">
+      <div class="title">
+        <span class="fs1" aria-hidden="true" data-icon="&#xe0b3;"></span> Liste des courses manquantes
+      </div>
+    </div>
+    <div class="widget-body">
+      <div class="todo-container">
+        <ul class="todo-list">
+           {% for entity in shoplist %}
+           <li>
+               {%if entity.isBought != true %}
+                <span class="new"></span>
+                <input type="checkbox" id="{{ entity.id }}"/>
+               {% else %}
+               <span class="completed"></span>
+               <input type="checkbox" id="{{ entity.id }}" checked/>
+               {% endif %}
+            <label for="1">
+              {{ entity.article }}
+            </label>
+            <a class="btn btn-mini btn-success pull-right"  href="{{ path('shoplist_bought', { 'id': entity.id }) }}">j'ai acheté</a>
+            &nbsp;<small class="text-warning pull-right">{% if entity.addingDate %}{{ entity.addingDate|date('d/m/Y') }}{% endif %}</small>
+            <em class="text-info pull-right">ajouté par {{ entity.author }} le </em>&nbsp;
+            
+          </li>
+	        {% endfor %}
+
+        </ul>
+        <form action="#" class="no-margin">
+          <div class="control-group">
+            
+          </div>
+          <div class="control-group no-margin">
+            <div class="controls">
+              <a class="btn btn-primary" data-toggle="modal" data-target="#modal" href="{{ path('shoplist_new') }}"><i class="icon-user icon-white"></i> ajouter un article à acheter</a>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</div> <!-- end todo list-->
