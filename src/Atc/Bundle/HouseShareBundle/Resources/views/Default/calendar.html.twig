@@ -1,0 +1,76 @@
+{% extends '::layout.html.twig' %}
+
+
+{% block title_content %}Calendrier des réservations{% endblock %}
+
+{% block content %}
+
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="widget">
+                <div class="widget-header">
+                    <div class="title">
+                        <span class="fs1" aria-hidden="true" data-icon="&#xe052;"></span> Réservation de Bréhat
+                    </div>
+                </div>
+                <div class="widget-body">
+                    
+                    <div id='calendar'></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+    // Calendar
+    $(document).ready(function() {
+
+      var date = new Date();
+      var d = date.getDate();
+      var m = date.getMonth();
+      var y = date.getFullYear();
+  
+      var calendar = $('#calendar').fullCalendar({
+        header: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'month,agendaWeek,agendaDay'
+        },
+        selectable: false,
+        selectHelper: true,
+        select: function(start, end, allDay) {
+          var title = prompt('Event Title:');
+          if (title) {
+            calendar.fullCalendar('renderEvent',
+              {
+                title: title,
+                start: start,
+                end: end,
+                allDay: allDay
+              },
+              true // make the event "stick"
+            );
+          }
+          calendar.fullCalendar('unselect');
+        },
+        editable: true,
+        events: [
+        {% for entity in calevent %}
+          {
+            title: '{{ entity.title }} ({{ entity.author }})',
+            start: new Date("{{ entity.startDatetime|date('Y m d') }}"),
+            end:  new Date("{{ entity.endDatetime|date('Y m d') }}"),
+            allDay: true
+            //author: 
+          },
+        {% endfor %}
+          
+          {
+            title: 'test',
+            start: new Date(y-1, m, d),
+            end: new Date(y-1, m, d+2)
+          }
+        ]
+      });
+    });
+    </script>
+{% endblock %}

@@ -79,7 +79,10 @@
        <a class="brand" href="#">Gestion de la maison de Brehat</a>
        <div class="nav-collapse collapse">
          <p class="navbar-text pull-right">
+           {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %} 
+           
            Utilisateur connecté: <a href="#" class="navbar-link">{{ app.user.username }}</a> <a href="{{ path('logout') }}">déconnection</a>
+          {% endif %}</p>
          </p>
          <ul class="nav">
            <li class="active"><a href="{{ path('home') }}">Bienvenue</a></li>

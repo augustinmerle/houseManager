@@ -75,6 +75,9 @@ fos_user:
     registration:
         form:
             type: atc_user_registration
+    profile:
+        form:
+            type: atc_user_profile
 
 mopa_bootstrap:
     navbar: ~
