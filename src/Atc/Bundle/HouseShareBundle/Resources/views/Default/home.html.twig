@@ -39,6 +39,7 @@
                         <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
                     </div>
                 </div>
+                
             </div>
         </div>
     </div>
@@ -71,7 +72,18 @@
                     </li>
                     {% endfor %}
                 </ul>
-                <a class="btn btn-small btn-primary" data-toggle="modal" data-target="#modal" href="{{ path('post_new') }}"><i class="icon-user icon-white"></i> ajouter un message</a>
+                <a class="btn btn-small btn-primary" data-toggle="modal" data-target="#modal2" href="{{ path('post_new') }}"><i class="icon-user icon-white"></i> ajouter un message</a>
+                <div id="modal2" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2" aria-hidden="true">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Chargement en cours…</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

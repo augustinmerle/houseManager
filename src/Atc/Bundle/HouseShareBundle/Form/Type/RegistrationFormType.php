@@ -20,7 +20,7 @@ class RegistrationFormType extends BaseType
 					       'Quitterie' => 'Famille Schoutheete',
 					       'Valerie' => 'Famille Cotreuil',
 					       'Sophie' => 'Famille Sophie',
-					       'Severin' => 'Famille Severin',
+					       'Severin' => 'Congrégation Père Severin',
 					       'Louis' => 'Famille Louis',
 					       'Sabine' => 'Famille Colles',
 					   ),

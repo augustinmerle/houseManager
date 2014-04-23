@@ -15,7 +15,7 @@
              <form action="{{ path('datereg_create') }}" method="post" {{ form_enctype(form) }}>
                 {{ form_widget(form) }}
                 <p>
-                    <button type="submit">Enregistrer</button>
+                    <button class="btn btn-small btn-success" type="submit">Enregistrer</button>
                 </p>
             </form>
         </div>
@@ -32,10 +32,11 @@
             <table class="records_list table table-condensed table-bordered no-margin">
                 <thead>
                     <tr>
-                        <th class="span3">Réservation</th>
+                        <th class="span2">Réservation</th>
                         <th class="span1">auteur</th>
                         <th class="span1">date de départ</th>
                         <th class="span1">date de fin</th>
+                        <th class="span1"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -45,11 +46,27 @@
                         <td>{{ entity.author }}</td>
                         <td>{% if entity.startDatetime %}{{ entity.startDatetime|date('d M Y H:i') }}{% endif %}</td>
                         <td>{% if entity.endDatetime %}{{ entity.endDatetime|date('d M Y H:i') }}{% endif %}</td>
+                        <td>{% if entity.author %}
+                            <a class="btn btn-small btn-warning2" data-toggle="modal" data-target="#modal" href="{{ path('datereg_edit', { 'id': entity.id }) }}">Edit</a>
+                            <a class="btn btn-small btn-danger" href="{{ path('datereg_delete', { 'id': entity.id }) }}">Supp</a>
+                            {% endif %}
+                        </td>
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
         </div>
+    </div>
+</div>
+<div id="modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    </div>
+    <div class="modal-body">
+        <p>Chargement en cours…</p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
     </div>
 </div>
 <br style="clear: both" />

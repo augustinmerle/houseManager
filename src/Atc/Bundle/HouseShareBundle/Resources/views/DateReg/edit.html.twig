@@ -1,28 +1,12 @@
-{% extends '::base.html.twig' %}
 
-{% block body -%}
-    <h1>DateReg edit</h1>
+{% block toto %}
+    <h3>Modifiaction de la réservation</h3>
 
     <form action="{{ path('datereg_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
         <input type="hidden" name="_method" value="PUT" />
         {{ form_widget(edit_form) }}
         <p>
-            <button type="submit">Edit</button>
+            <button type="submit" class="btn btn-info ">Valider</button>
         </p>
     </form>
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('datereg') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <form action="{{ path('datereg_delete', { 'id': entity.id }) }}" method="post">
-            <input type="hidden" name="_method" value="DELETE" />
-            {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
-        </form>
-    </li>
-</ul>
 {% endblock %}

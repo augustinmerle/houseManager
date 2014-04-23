@@ -28,7 +28,10 @@ class DateRegType extends AbstractType
                 'widget' => 'choice',
                 'years'  => $yearsrange,
                 'label'  => 'date de fin' 
-            ));
+            ))
+            ->add('nbPerson', 'integer', array('label' => 'Nombre de Personnes présentes'))
+                
+            ;
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)

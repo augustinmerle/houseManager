@@ -54,7 +54,7 @@ class DateRegController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('datereg_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('datereg_new'));
         }
 
         return array(
@@ -162,7 +162,8 @@ class DateRegController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('datereg_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('datereg_new'));
+            
         }
 
         return array(
@@ -195,7 +196,7 @@ class DateRegController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('datereg'));
+        return $this->redirect($this->generateUrl('datereg_new'));
     }
 
     /**
