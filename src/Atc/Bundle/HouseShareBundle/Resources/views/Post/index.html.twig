@@ -1,6 +1,6 @@
-{% extends '::base.html.twig' %}
+{% extends '::layout.html.twig' %}
 
-{% block body -%}
+{% block content %}
     <h1>Post list</h1>
 
     <table class="records_list">
@@ -40,48 +40,4 @@
             </a>
         </li>
     </ul>
-    {% endblock %}
-
-
-
-<!-- ------------------------------------------------------------ -->
-        <p style="border: 1px solid grey">
-					
-        	<legend>{% if entity.dateAdd %}{{ entity.dateAdd|date('Y-m-d') }}{% endif %}</legend>
-        </p>
-
- <div class="row-fluid">
-    <div class="span12">
-      <div class="widget no-margin">
-        <div class="widget-header">
-          <div class="title">
-            <span class="fs1" aria-hidden="true" data-icon="&#xe1c5;"></span> Messages
-          </div>
-        </div>
-        <div class="widget-body">
-          <ul class="imp-messages">
-						{% for entity in postlist %}
-	
-            <li>
-              <img src="img/avatar-1.png" class="avatar" alt="Avatar">
-              <div class="message-date">
-                <h3 class="date text-info">{{ entity.dateAdd|date('Y') }}</h3>
-                <p class="month">{{ entity.dateAdd|date('m') }}</p>
-              </div>
-              <div class="message-wrapper">
-                <h4 class="message-heading">toto</h4>
-                <blockquote class="message">{{ entity.post }}
-                </blockquote>
-                <br>
-                <p class="url">
-                  <span class="fs1 text-info" aria-hidden="true" data-icon="&#xe0c5;"></span>
-                  <a href="#">visualize</a>
-                </p>
-              </div>
-            </li>
-            {% endfor %}
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
+  {% endblock %}
