@@ -212,8 +212,8 @@ class ShopListController extends Controller
     /**
      * Mark an article bought by a user
      *
-     * @Method("GET")
-     * @Route("/{id}/bought", name="shoplist_bought")
+     * @Method("DELETE")
+     * @Route("/bought/{id}", name="shoplist_bought")
      */
      public function boughtArticleAction(Request $request, $id){
 	      $em = $this->getDoctrine()->getManager();
