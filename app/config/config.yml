@@ -29,7 +29,7 @@ twig:
 assetic:
     debug:          %kernel.debug%
     use_controller: false
-    bundles:        [ MopaBootstrapBundle, AtcHouseShareBundle ]
+    bundles:        [  AtcHouseShareBundle ]
     #java: /usr/bin/java
     filters:
         cssrewrite: ~
@@ -79,11 +79,3 @@ fos_user:
         form:
             type: atc_user_profile
 
-mopa_bootstrap:
-    navbar: ~
-    initializr: ~
-    form:
-        show_legend: false # default is true
-        show_child_legend: false # default is true
-        error_type: block # or inline which is default
-        checkbox_label: 'widget' # default is both (label|widget|both)
