@@ -7,4 +7,5 @@
 /bin/
 /composer.phar
 npm-debug.log
+app/sessions/*
 app/config/parameters.yml
