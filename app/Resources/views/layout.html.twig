@@ -91,11 +91,22 @@
             </li>
             <li>
               <a href="{{ path('calendar') }}" class="{% if app.request.attributes.get('_route') == 'calendar' %}selected{% endif %}">
-                <span class="fs1" aria-hidden="true" data-icon="&#xe0b8;"></span> Calendrier
+                <span class="fs1" aria-hidden="true" data-icon="&#xe189;"></span> Calendrier
               </a>
-              
-              </ul>
             </li>
+            <li>
+              <a href="{{ path('calendar') }}"  class="{% if app.request.attributes.get('_route') == 'consigne' %}selected{% endif %}">
+                  <span class="fs1" aria-hidden="true" data-icon="&#xe07a;"></span>Consignes
+              </a>
+            </li>
+            {% if is_granted('ROLE_ADMIN') %}
+            <li>
+              <a href="{{ path('admin') }}"  class="{% if app.request.attributes.get('_route') == 'admin' %}selected{% endif %}">
+                  <span class="fs1" aria-hidden="true" data-icon="&#xe088;"></span>Admin
+              </a>
+            </li>
+            {% endif %}
+            
           </ul>
           <div class="clearfix"></div>
         </div> <!-- Main navigation end -->
@@ -114,11 +125,13 @@
                       <a href="{{ path('home') }}" class="{% if app.request.attributes.get('_route') == 'home' %}selected{% endif %}">Dashboard</a>
                     </li>
                     <li>
-                      <a href="{{ path('datereg_new') }}" class="{% if app.request.attributes.get('_route') == '_list' %}selected{% endif %}">Reservation</a>
+                      <a href="{{ path('datereg_new') }}">Reservation</a>
                     </li>
                     <li>
-                      <a href="{{ path('calendar') }}"  class="{% if app.request.attributes.get('_route') == '_list' %}selected{% endif %}">Calendrier</a>
-                      </ul>
+                      <a href="{{ path('calendar') }}" >Calendrier</a>
+                    </li>
+                    <li>
+                      <a href="{{ path('admin') }}">Consignes</a>
                     </li>
                   </ul>
                 </div>

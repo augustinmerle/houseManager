@@ -9,11 +9,13 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Atc\Bundle\HouseShareBundle\Entity\DateReg;
 use Atc\Bundle\HouseShareBundle\Form\DateRegType;
+use JMS\SecurityExtraBundle\Annotation\Secure;
 
 /**
  * DateReg controller.
  *
  * @Route("/datereg")
+ * 
  */
 class DateRegController extends Controller
 {
@@ -40,6 +42,7 @@ class DateRegController extends Controller
      *
      * @Route("/", name="datereg_create")
      * @Method("POST")
+     * @Secure(roles="ROLE_USER_FAMILY")
      * @Template("AtcHouseShareBundle:DateReg:new.html.twig")
      */
     public function createAction(Request $request)
@@ -67,6 +70,7 @@ class DateRegController extends Controller
      * Displays a form to create a new DateReg entity.
      *
      * @Route("/new", name="datereg_new")
+     * @Secure(roles="ROLE_USER_FAMILY")
      * @Method("GET")
      * @Template()
      */
@@ -114,6 +118,7 @@ class DateRegController extends Controller
      * Displays a form to edit an existing DateReg entity.
      *
      * @Route("/{id}/edit", name="datereg_edit")
+     * @Secure(roles="ROLE_USER_FAMILY")
      * @Method("GET")
      * @Template()
      */
@@ -142,6 +147,7 @@ class DateRegController extends Controller
      *
      * @Route("/{id}", name="datereg_update")
      * @Method("PUT")
+     * @Secure(roles="ROLE_USER_FAMILY")
      * @Template("AtcHouseShareBundle:DateReg:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
@@ -177,6 +183,7 @@ class DateRegController extends Controller
      * Deletes a DateReg entity.
      *
      * @Route("/{id}", name="datereg_delete")
+     * @Secure(roles="ROLE_USER_FAMILY")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, $id)

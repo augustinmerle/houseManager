@@ -46,7 +46,7 @@
                         <td>{{ entity.author }}</td>
                         <td>{% if entity.startDatetime %}{{ entity.startDatetime|date('d M Y H:i') }}{% endif %}</td>
                         <td>{% if entity.endDatetime %}{{ entity.endDatetime|date('d M Y H:i') }}{% endif %}</td>
-                        <td>{% if entity.author %}
+                        <td>{% if entity.author == app.user %}
                             <a class="btn btn-small btn-warning2" data-toggle="modal" data-target="#modal" href="{{ path('datereg_edit', { 'id': entity.id }) }}">Edit</a>
                             <a class="btn btn-small btn-danger" href="{{ path('datereg_delete', { 'id': entity.id }) }}">Supp</a>
                             {% endif %}
