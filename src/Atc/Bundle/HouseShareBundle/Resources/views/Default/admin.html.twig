@@ -4,26 +4,35 @@
 {% block title_content %}Gestion des Utilisateurs{% endblock %}
 
 {% block content %}
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="widget">
+                <div class="widget-header">
+                    <div class="title">
+                        <span class="fs1" aria-hidden="true" data-icon="&#xe052;"></span> Réservation de Bréhat
+                    </div>
+                </div>
+                <div class="widget-body">
     <table class="table .table-condensed">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>username</th>
-                <th>email</th>
-                <th>famille</th>
-                <th>authorisations</th>
-                <th>Actions</th>
+                <th class="span1 hidden-phone ">Id</th>
+                <th class="span1 info">username</th>
+                <th class="span1 hidden-phone ">email</th>
+                <th class="span1">famille</th>
+                <th class="span1 hidden-phone error">authorisations</th>
+                <th class="span1 warning">Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for entity in users %}
             <tr>
-                <td><a href="{{ path('post_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.username }}</td>
-                <td>{{ entity.email }}</td>
+                <td class="hidden-phone "><a href="{{ path('post_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td class="info">{{ entity.username }}</td>
+                <td class="hidden-phone ">{{ entity.email }}</td>
                 <td>{{ entity.family }}</td>
-                <td>{{ entity.roles|join(' ')  }}</td>
-                <td>
+                <td class="hidden-phone error">{{ entity.roles|join(' ')  }}</td>
+                <td class="warning">
                         {% if 'ROLE_ADMIN' not in entity.roles %}
                         <a class="btn btn-small btn-inverse " href="{{ path('admin_promote', { 'username': entity.username }) }}">autoriser</a>
                         {% endif %}
@@ -32,4 +41,8 @@
         {% endfor %}
         </tbody>
     </table>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

@@ -95,7 +95,7 @@
               </a>
             </li>
             <li>
-              <a href="{{ path('calendar') }}"  class="{% if app.request.attributes.get('_route') == 'consigne' %}selected{% endif %}">
+              <a href="{{ path('consigne') }}"  class="{% if app.request.attributes.get('_route') == 'consigne' %}selected{% endif %}">
                   <span class="fs1" aria-hidden="true" data-icon="&#xe07a;"></span>Consignes
               </a>
             </li>
@@ -131,7 +131,10 @@
                       <a href="{{ path('calendar') }}" >Calendrier</a>
                     </li>
                     <li>
-                      <a href="{{ path('admin') }}">Consignes</a>
+                      <a href="{{ path('admin') }}">Admin</a>
+                    </li>
+                    <li>
+                      <a href="{{ path('consigne') }}">Consignes</a>
                     </li>
                   </ul>
                 </div>

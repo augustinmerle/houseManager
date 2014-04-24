@@ -89,6 +89,21 @@ class DefaultController extends Controller
     /**
      * home of admin.
      *
+     * @Route("/consigne", name="consigne")
+     * @Method("GET")
+     * @Secure(roles="ROLE_USER_FAMILY")
+     * @Template()
+     */
+    public function consigneAction()
+    { 
+        
+        return array(
+            
+        );
+    }
+    /**
+     * home of admin.
+     *
      * @Route("/admin_promote/{username}", name="admin_promote")
      * @Method("GET")
      * @Secure(roles="ROLE_ADMIN")
