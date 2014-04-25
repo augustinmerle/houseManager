@@ -36,6 +36,7 @@
                         <th class="span1">auteur</th>
                         <th class="span1">date de départ</th>
                         <th class="span1">date de fin</th>
+                        <th class="span1">Nb de Personnes</th>
                         <th class="span1"></th>
                     </tr>
                 </thead>
@@ -45,7 +46,8 @@
                         <td>{{ entity.title }}</td>
                         <td>{{ entity.author }}</td>
                         <td>{% if entity.startDatetime %}{{ entity.startDatetime|date('d M Y H:i') }}{% endif %}</td>
-                        <td>{% if entity.endDatetime %}{{ entity.endDatetime|date('d M Y H:i') }}{% endif %}</td>
+                       <td>{% if entity.endDatetime %}{{ entity.endDatetime|date('d M Y H:i') }}{% endif %}</td>
+                       <td>{{ entity.nbPerson }}</td>
                         <td>{% if entity.author == app.user %}
                             <a class="btn btn-small btn-warning2" data-toggle="modal" data-target="#modal" href="{{ path('datereg_edit', { 'id': entity.id }) }}">Edit</a>
                             <a class="btn btn-small btn-danger" href="{{ path('datereg_delete', { 'id': entity.id }) }}">Supp</a>
