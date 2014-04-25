@@ -33,7 +33,7 @@
                 <td>{{ entity.family }}</td>
                 <td class="hidden-phone error">{{ entity.roles|join(' ')  }}</td>
                 <td class="warning">
-                        {% if 'ROLE_ADMIN' not in entity.roles %}
+                        {% if 'ROLE_USER_FAMILY' not in entity.roles %}
                         <a class="btn btn-small btn-inverse " href="{{ path('admin_promote', { 'username': entity.username }) }}">autoriser</a>
                         {% endif %}
                 </td>
