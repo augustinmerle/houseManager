@@ -22,7 +22,7 @@ class DefaultController extends Controller
     /**
      * index of app.
      *
-     * @Route("/", name="index")
+     * @Route("/unauthorized", name="index")
      * @Method("GET")
      * 
      * @Template()
@@ -35,7 +35,7 @@ class DefaultController extends Controller
     /**
      * home of app.
      *
-     * @Route("/home", name="home")
+     * @Route("/", name="home")
      * @Method("GET")
      * @Secure(roles="ROLE_USER_FAMILY")
      * @Template()

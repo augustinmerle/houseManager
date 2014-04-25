@@ -28,7 +28,7 @@ ssh_options[:forward_agent] = true
 set :deploy_via, :remote_cache
 #set :use_orm, true
 set :shared_files,      [ "app/config/parameters.yml"]
-set :shared_children,     [app_path + "/logs",app_path + "/cache", web_path + "/uploads", "vendor"]
+set :shared_children,     [app_path + "/logs",app_path + "/cache", web_path + "/uploads", "vendor" ,app_path + "/sessions"]
 
 set :writable_dirs,       ["app/cache", "app/logs"]
 set :webserver_user,      "www-data"

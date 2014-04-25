@@ -1,13 +1,14 @@
-{% extends 'FOSUserBundle::layout.html.twig' %}
+{% extends '::layout.html.twig' %}
 
-{% block fos_user_content %}
+{% block title_content %}Accès non autorisé{% endblock %}
 
-    <h1>Bonjour</h1>
+{% block content %}
+
     <p>
-        ceci est un espace protégé vous devez etre authentifié pour utiliser ce site.
+        L'administrateur ne vous à pas encore authoriser à acceder à ce contenu.
+        Vous pouvez le contactez par mail.
     </p>
 
-  <a href="{{ path('fos_user_registration_register') }}">s'enregister</a>
   
 <br style="clear:both;"/>
 {% endblock %}

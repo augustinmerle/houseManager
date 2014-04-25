@@ -79,6 +79,7 @@
       <div class="dashboard-wrapper"> <!-- Main dashboard wrapper start -->
         <div id="main-nav" class="hidden-phone hidden-tablet"> <!-- Main navigation start -->
           <ul>
+         {% if is_granted("ROLE_USER_FAMILY") %} 
             <li>
               <a href="{{ path('home') }}"  class="{% if app.request.attributes.get('_route') == 'home' %}selected{% endif %}">
                 <span class="fs1" aria-hidden="true" data-icon="&#xe0a0;"></span> Dashboard
@@ -99,6 +100,7 @@
                   <span class="fs1" aria-hidden="true" data-icon="&#xe07a;"></span>Consignes
               </a>
             </li>
+             {% endif %}
             {% if is_granted('ROLE_ADMIN') %}
             <li>
               <a href="{{ path('admin') }}"  class="{% if app.request.attributes.get('_route') == 'admin' %}selected{% endif %}">
